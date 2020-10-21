@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bdqn.program.myshops.dao.OrderDao">
+    <insert id="saveOrder" keyProperty="ord_id" useGeneratedKeys="true" parameterType="com.bdqn.program.myshops.entity.Orders">
+        insert into orders(order_num,cust_id,ord_status,created_at,pay_type,need_desc,bank)
+                values(#{order_num},#{cust_id},1,now(),#{pay_type},#{need_desc},#{bank})
+    </insert>
+    <insert id="saveOrderItems" parameterType="list">
+        insert into orderItems(ord_id,good_id,buy_num) values
+        <foreach collection="list" item="oi" separator=",">
+            (#{oi.ord_id},#{oi.good_id},#{oi.buy_num})
+        </foreach>
+    </insert>
+</mapper>

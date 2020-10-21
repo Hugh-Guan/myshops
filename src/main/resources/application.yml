@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.56.116:3306/myshops
+    username: root
+    password: root
+  redis:
+    database: 0
+    host: 192.168.56.116
+    port: 6379
+    password:
+  mybatis:
+    mapper-location: classpath:mapping/*.xml
+
